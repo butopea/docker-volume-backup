@@ -22,7 +22,7 @@ fi
 # BACKUP_FILENAME
 # Access key and secret key for S3 Endpoint in credentials file needed
 
-# Only execute if restore path is empty or forced flag is set
+# Only execute if restore path is empty
 if [ "$data_dir_empty" = true ] ; then
 
   start=$(date +%s)

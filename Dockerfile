@@ -3,7 +3,7 @@ FROM golang:1.19-alpine as builder
 RUN go install github.com/containrrr/shoutrrr/shoutrrr@latest
 
 
-FROM offen/docker-volume-backup:latest
+FROM offen/docker-volume-backup:v2
 MAINTAINER Butopêa <alex@butopea.com>
 
 COPY --from=builder /go/bin/shoutrrr /usr/bin/shoutrrr
