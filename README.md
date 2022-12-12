@@ -55,3 +55,6 @@ You can manually trigger a restore (if directory is empty) by executing the `res
 ```
 docker exec <container_ref> restore
 ```
+> **Note**
+> Restoration command assumes that you want to extract the content of backup directory excluding main directory.
+> Useful for volume restoration.
