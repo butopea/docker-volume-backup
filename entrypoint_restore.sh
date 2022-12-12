@@ -14,7 +14,7 @@ aws_access_key_id = ${AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
 EOF
 #  exec restore. If mounted volume empty, it will automatically restore from backup
-exec restore
+restore
 else
   echo "No AWS keys found. No restore from AWS S3 possible."
 fi
