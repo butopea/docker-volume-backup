@@ -1,6 +1,6 @@
 FROM golang:1.19-alpine as builder
 
-RUN go install github.com/containrrr/shoutrrr/shoutrrr@latest
+RUN go install github.com/containrrr/shoutrrr@latest
 
 
 FROM offen/docker-volume-backup:v2
