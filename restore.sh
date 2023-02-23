@@ -26,8 +26,10 @@ fi
 if [ "$data_dir_empty" = true ] ; then
 
   start=$(date +%s)
+  # If AWS_S3_PATH not empty, add slash
+  if [ -n "$AWS_S3_PATH" ]; then AWS_S3_PATH="/${AWS_S3_PATH}"; fi
   echo "INFO" "Downloading file ${BACKUP_FILENAME} to temp location"
-  aws --endpoint-url https://${AWS_ENDPOINT} s3 cp "s3://${AWS_S3_BUCKET_NAME}/${AWS_S3_PATH}/${BACKUP_FILENAME}" /tmp/${BACKUP_FILENAME}
+  aws --endpoint-url https://${AWS_ENDPOINT} s3 cp "s3://${AWS_S3_BUCKET_NAME}${AWS_S3_PATH}/${BACKUP_FILENAME}" /tmp/${BACKUP_FILENAME}
   end=$(date +%s)
   download=$((end-start))
   echo "INFO" "Downloaded in ${download} seconds."
