@@ -2,19 +2,16 @@
 
 set -e
 
-# check if volume data is not empty
+# Check if env variables are set
+BACKUP_SOURCES=${BACKUP_SOURCES:-/backup}
+
+# check if volume backup data is not empty
 data_dir_empty=false
-if [ -d "${BACKUP_SOURCES}" ]
-then
-	if [ "$(ls -A ${BACKUP_SOURCES})" ]; then
-     echo "${BACKUP_SOURCES} is not empty! No auto restoration. Delete content of mounted volume first."
-	else
-    echo "${BACKUP_SOURCES} is empty. Begin restore of backup."
-    data_dir_empty=true
-	fi
+if [ "$(ls -A ${BACKUP_SOURCES})" ]; then
+   echo "${BACKUP_SOURCES} is not empty! No auto restoration. Delete content of mounted volume first."
 else
-	echo "Directory ${BACKUP_SOURCES} not found. Begin restore of backup."
-	data_dir_empty=true
+  echo "${BACKUP_SOURCES} is empty. Begin restore of backup."
+  data_dir_empty=true
 fi
 
 # If docker volume dir is empty, restore files from backup
