@@ -2,6 +2,21 @@
 
 set -e
 
+# Parse command line options
+force=false
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -f|--force)
+      force=true
+      shift # past argument
+      ;;
+    *)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+  esac
+done
+
 # Check if env variables are set
 BACKUP_SOURCES=${BACKUP_SOURCES:-/backup}
 
@@ -20,7 +35,7 @@ fi
 # Access key and secret key for S3 Endpoint in credentials file needed
 
 # Only execute if restore path is empty
-if [ "$data_dir_empty" = true ] ; then
+if [[ "$force" = true ]] || [[ "$data_dir_empty" = true ]]; then
 
   start=$(date +%s)
   # If AWS_S3_PATH not empty, add slash
