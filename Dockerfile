@@ -1,7 +1,10 @@
 FROM offen/docker-volume-backup:v2
 MAINTAINER Butopêa <alex@butopea.com>
 
-RUN apk add --no-cache aws-cli
+RUN apk add --no-cache \
+        aws-cli \
+        tar \
+    && rm -rf /var/cache/apk/*
 
 WORKDIR /root
 COPY ./entrypoint_restore.sh /root/entrypoint_restore.sh
