@@ -48,7 +48,7 @@ if [[ "$force" = true ]] || [[ "$data_dir_empty" = true ]]; then
 
   start=$(date +%s)
   echo "INFO" "Extracting data to ${BACKUP_SOURCES}"
-  tar --strip-components=1 -C ${BACKUP_SOURCES} -xzf /tmp/${BACKUP_FILENAME} ${BACKUP_SOURCES:1}
+  tar --strip-components=1 -C ${BACKUP_SOURCES} -xzf /tmp/${BACKUP_FILENAME}
   end=$(date +%s)
   restored=$((end-start))
   echo "INFO" "Extracted in ${restored} seconds."
