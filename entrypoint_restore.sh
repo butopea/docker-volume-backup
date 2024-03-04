@@ -20,4 +20,4 @@ else
 fi
 
 # Call original entrypoint script from upstream image
-exec /root/entrypoint.sh "$@"
+exec /usr/bin/backup -foreground "$@"
